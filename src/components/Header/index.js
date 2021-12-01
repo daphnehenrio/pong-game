@@ -13,6 +13,8 @@ const Header = () => {
     players,
   } = useSelector((state) => state.game);
 
+  // Vérifier s’il y a des joueurs enregistrer pour aficher nom et score
+  const existingPlayers = players[0].name && players[1].name;
 
   const Player = ({player}) => {
     const {name, score } = player;
@@ -28,7 +30,7 @@ const Header = () => {
     <div className="header">
       <h1>Pong Game</h1>
       <div className="players">
-        {players.map((player) => (
+        {existingPlayers && players.map((player) => (
             <Player key={player.id} player={player}/>
           ))}
       </div>
