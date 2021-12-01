@@ -7,6 +7,7 @@ import './styles.scss';
 // == Composant
 const Court = () => (
   <div className="court">
+    <div className="middle"></div>
   </div>
 );
 

@@ -1,3 +1,17 @@
 .court {
-  position: relative;
+  background-color: black;
+  height: 80vh;
+  width: 90vw;
+  position: absolute;
+  margin-top: 15vh;
+
+  .middle {
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    left: calc(50% - 2px);
+    border:none;
+    border-left:2px dashed white;
+    border-right:2px dashed white;
+  }
 }
