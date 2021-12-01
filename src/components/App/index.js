@@ -2,6 +2,7 @@
 import React from 'react';
 
 // ? Import
+import Header from '../Header';
 import Court from '../Court';
 
 // ? Import styles
@@ -10,7 +11,7 @@ import './styles.scss';
 // ? Composant
 const App = () => (
   <div className="app">
-    <h1>Pong Game</h1>
+    <Header />
     <Court />
   </div>
 );

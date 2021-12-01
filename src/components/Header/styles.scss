@@ -1,3 +1,26 @@
 .header {
+  padding-top: 10px;
   position: relative;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    font-size:22px;
+  }
+
+  .players {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    .player{
+      &:first-child {
+        margin-left: 50px;
+      }
+  
+      &:last-child {
+        margin-right: 50px;
+      }
+    }
+  }
 }
