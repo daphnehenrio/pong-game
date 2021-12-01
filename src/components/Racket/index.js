@@ -5,8 +5,15 @@ import React from 'react';
 import './styles.scss';
 
 // == Composant
-const Racket = () => (
-  <div className="racket">
+const Racket = ({ position, side }) => (
+  <div className="racket"
+    style={{
+      position: 'absolute',
+      left: side === 'left' ? 0 : undefined,
+      right: side === 'right' ? 0 : undefined,
+      top: position,
+    }}
+  >
   </div>
 );
 

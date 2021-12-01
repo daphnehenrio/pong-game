@@ -17,8 +17,8 @@ const App = () => {
   } = useSelector((state) => state.game);
 
   // Vérifier s’il y a des joueurs enregistrer pour aficher formulaire
-  const existingPlayers = players[0].name && players[1].name;
-
+  const existingPlayers = !!players[0].name && players[1].name;
+  
   return (
   <div className="app">
     <Header />
