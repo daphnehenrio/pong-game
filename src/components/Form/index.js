@@ -8,7 +8,7 @@ import { actionSetPlayersName } from '../../actions'
 import './styles.scss';
 
 // == Composant
-const Form = (isOpen) => {
+const Form = ({ isOpen }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -24,7 +24,12 @@ const Form = (isOpen) => {
   }
 
   return (
-    <ReactModal isOpen={isOpen} class="modal">
+    <ReactModal 
+      isOpen={isOpen} 
+      class="modal" 
+      ariaHideApp={false}
+      contentLabel="Choose player name"
+    >
       <form className="form" onSubmit={handleSubmit}>
         <input type="text" name="player1" className="name" id="player1" required placeholder="Nom joueur 1"/>
         <input type="text" name="player2" className="name" id="player2" required placeholder="Nom joueur 2"/>

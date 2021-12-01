@@ -5,10 +5,14 @@ const initialState = {
     id: 1,
     name: "",
     score: 0,
+    racketPosition: 0,
+    side: "left",
   },{
     id: 2,
     name: "",
     score: 0,
+    racketPosition: 0,
+    side: "right",
   }],
 };
 
