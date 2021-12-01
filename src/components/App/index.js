@@ -1,15 +1,19 @@
-// == Import npm
+// ? Import npm
 import React from 'react';
 
-// == Import
+// ? Import
+import Court from '../Court';
+
+// ? Import styles
 import './styles.scss';
 
-// == Composant
+// ? Composant
 const App = () => (
   <div className="app">
     <h1>Pong Game</h1>
+    <Court />
   </div>
 );
 
-// == Export
+// ? Export
 export default App;
