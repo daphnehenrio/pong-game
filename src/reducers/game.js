@@ -1,6 +1,8 @@
 import * as GameActions from '../actions/game';
 
 const initialState = {
+  gameStart: false,
+  racketMoveDistance: 10,
   players: [{
     id: 1,
     name: '',
@@ -16,7 +18,6 @@ const initialState = {
   }],
 };
 
-
 export default function game(state = initialState, action) {
   switch (action.type) {
     case GameActions.SET_PLAYERS_NAME: {
@@ -28,7 +29,43 @@ export default function game(state = initialState, action) {
         ...state,
       };
     }
+    case GameActions.MOVE_PLAYER_RACKET: {
+      const { playerId, direction, maxHeight } = action;
+      const allPlayers = state.players;
+      const distanceToMove = state.racketMoveDistance;
+
+      const currentPlayer = allPlayers.find((player) => player.id === playerId);
+      if (!currentPlayer) {
+        console.error('No current player found');
+        return null;
       }
+      // Si la raquette est toute en haut, on ne peut pas monter plus
+      if (direction === 'up' && currentPlayer.racketPosition > 0) {
+        // On monte le plateau
+        currentPlayer.racketPosition -= distanceToMove;
+        // On vérifie qu’après mouvement ça ne débordera pas du court,
+        // sinon on positionne tout en haut.
+        if (currentPlayer.racketPosition < 0) {
+          currentPlayer.racketPosition = 0;
+        }
+        allPlayers.map((player) => (player.id === playerId ? currentPlayer : player));
+      }
+      // Si la raquette est toute en bas - sa propre hauteur, on ne peut pas descendre plus
+      else if (direction === 'down' && currentPlayer.racketPosition < (maxHeight - 50)) {
+        // On descend le plateau
+        currentPlayer.racketPosition += distanceToMove;
+        // On vérifie qu’après mouvement ça ne débordera pas du court,
+        // sinon on positionne tout en bas.
+        if (currentPlayer.racketPosition > (maxHeight - 50)) {
+          currentPlayer.racketPosition = maxHeight - 50;
+        }
+        allPlayers.map((player) => (player.id === playerId ? currentPlayer : player));
+      }
+
+      return {
+        ...state,
+        players: allPlayers,
+      };
     }
     default:
       return state;
