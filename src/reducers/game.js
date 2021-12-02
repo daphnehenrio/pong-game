@@ -3,32 +3,34 @@ import * as GameActions from '../actions/game';
 const initialState = {
   players: [{
     id: 1,
-    name: "",
+    name: '',
     score: 0,
     racketPosition: 0,
-    side: "left",
-  },{
+    side: 'left',
+  }, {
     id: 2,
-    name: "",
+    name: '',
     score: 0,
     racketPosition: 0,
-    side: "right",
+    side: 'right',
   }],
 };
 
 
 export default function game(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case GameActions.SET_PLAYERS_NAME: {
-      state.players.map(player => {
-        player.name = action[`player${player.id}`]
+      state.players.map((player) => {
+        player.name = action[`player${player.id}`];
         return player;
-      })
+      });
       return {
         ...state,
+      };
+    }
       }
     }
     default:
       return state;
   }
-};
+}

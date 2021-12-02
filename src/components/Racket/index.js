@@ -1,21 +1,27 @@
-// == Import npm
+// ? Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// == Import
+// ? Import
 import './styles.scss';
 
-// == Composant
+// ? Composant
 const Racket = ({ position, side }) => (
-  <div className="racket"
+  <div
+    className="racket"
     style={{
       position: 'absolute',
       left: side === 'left' ? 0 : undefined,
       right: side === 'right' ? 0 : undefined,
       top: position,
     }}
-  >
-  </div>
+  />
 );
 
-// == Export
+// ? Export
 export default Racket;
+
+Racket.propTypes = {
+  position: PropTypes.number.isRequired,
+  side: PropTypes.string.isRequired,
+};

@@ -35,7 +35,9 @@
     "react/function-component-definition": [
       2, 
       { "namedComponents": "arrow-function" }
-    ]
+    ],
+    "default-param-last": "off",
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {
