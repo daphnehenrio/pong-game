@@ -81,15 +81,19 @@ const Court = ({ formIsOpen }) => {
 
   return (
     <div className="court" ref={targetRef}>
+      {!formIsOpen && (
+        <>
+          {players.map((player) => (
+            <Racket
+              key={player.id}
+              position={player.racketPosition}
+              side={player.side}
+            />
+          ))}
+          <Ball courtDimension={dimensions} />
+        </>
+      )}
       <div className="middle" />
-      {players.map((player) => (
-        <Racket
-          key={player.id}
-          position={player.racketPosition}
-          side={player.side}
-        />
-      ))}
-      <Ball courtDimension={dimensions} />
     </div>
   );
 };

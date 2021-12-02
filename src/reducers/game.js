@@ -2,7 +2,6 @@ import * as GameActions from '../actions/game';
 
 const initialState = {
   gameStart: false,
-  racketMoveDistance: 10,
   players: [{
     id: 1,
     name: '',
@@ -16,6 +15,20 @@ const initialState = {
     racketPosition: 0,
     side: 'right',
   }],
+  ball: {
+    size: 10,
+    maxSpeed: { x: 27, y: 14 },
+    baseSpeed: { x: 5, y: 5 },
+    xSpeed: 5,
+    ySpeed: 5,
+    xBounced: false,
+    yBounced: false,
+    stop: false,
+  },
+  racket: {
+    racketMoveDistance: 10,
+    height: 50,
+  },
 };
 
 export default function game(state = initialState, action) {
@@ -32,7 +45,7 @@ export default function game(state = initialState, action) {
     case GameActions.MOVE_PLAYER_RACKET: {
       const { playerId, direction, maxHeight } = action;
       const allPlayers = state.players;
-      const distanceToMove = state.racketMoveDistance;
+      const distanceToMove = state.racket.racketMoveDistance;
 
       const currentPlayer = allPlayers.find((player) => player.id === playerId);
       if (!currentPlayer) {
@@ -65,6 +78,12 @@ export default function game(state = initialState, action) {
       return {
         ...state,
         players: allPlayers,
+      };
+    }
+    case GameActions.START_GAME: {
+      return {
+        ...state,
+        gameStart: true,
       };
     }
     default:
