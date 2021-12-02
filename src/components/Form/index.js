@@ -1,13 +1,14 @@
-// == Import npm
+// ? Import npm
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
-// == Import local
-import { actionSetPlayersName } from '../../actions'
+// ? Import local
+import { actionSetPlayersName } from '../../actions';
 import './styles.scss';
 
-// == Composant
+// ? Composant
 const Form = ({ isOpen }) => {
   const dispatch = useDispatch();
 
@@ -18,27 +19,30 @@ const Form = ({ isOpen }) => {
 
     dispatch(actionSetPlayersName(player1Name, player2Name));
 
-    e.target.player1.value = "";
-    e.target.player2.value = "";
-    
-  }
+    // Clean input
+    e.target.player1.value = '';
+    e.target.player2.value = '';
+  };
 
   return (
-    <ReactModal 
-      isOpen={isOpen} 
-      class="modal" 
+    <ReactModal
+      isOpen={isOpen}
+      class="modal"
       ariaHideApp={false}
       contentLabel="Choose player name"
     >
       <form className="form" onSubmit={handleSubmit}>
-        <input type="text" name="player1" className="name" id="player1" required placeholder="Nom joueur 1"/>
-        <input type="text" name="player2" className="name" id="player2" required placeholder="Nom joueur 2"/>
+        <input type="text" name="player1" className="name" id="player1" required placeholder="Nom joueur 1" />
+        <input type="text" name="player2" className="name" id="player2" required placeholder="Nom joueur 2" />
         <button type="submit">Valider</button>
       </form>
     </ReactModal>
   );
-}
+};
 
-
-// == Export
+// ? Export
 export default Form;
+
+Form.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+};
