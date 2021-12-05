@@ -1,6 +1,7 @@
 export const SET_PLAYERS_NAME = 'action/SET_PLAYERS_NAME';
 export const MOVE_PLAYER_RACKET = 'action/MOVE_PLAYER_RACKET';
 export const START_GAME = 'action/START_GAME';
+export const PAUSE_GAME = 'action/PAUSE_GAME';
 export const UPDATE_BALL_SPEAD = 'action/UPDATE_BALL_SPEAD';
 
 /**
@@ -32,6 +33,13 @@ export const actionMovePlayerRacket = (playerId, direction, maxHeight) => ({
  */
 export const actionStartGame = () => ({
   type: START_GAME,
+});
+
+/**
+ * action ➔ Pause Game
+ */
+export const actionPauseGame = () => ({
+  type: PAUSE_GAME,
 });
 
 /**

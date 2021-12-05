@@ -2,6 +2,7 @@ import * as GameActions from '../actions/game';
 
 const initialState = {
   gameStart: false,
+  gamePaused: false,
   players: [{
     id: 1,
     name: '',
@@ -84,6 +85,13 @@ export default function game(state = initialState, action) {
       return {
         ...state,
         gameStart: true,
+      };
+    }
+    case GameActions.PAUSE_GAME: {
+      // Toogle pause game
+      return {
+        ...state,
+        gamePaused: !state.gamePaused,
       };
     }
     default:
