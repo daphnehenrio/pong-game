@@ -17,6 +17,7 @@ const Form = ({ isOpen }) => {
     const player1Name = e.target.player1.value;
     const player2Name = e.target.player2.value;
 
+    // Set players’ name in reducer
     dispatch(actionSetPlayersName(player1Name, player2Name));
 
     // Clean input

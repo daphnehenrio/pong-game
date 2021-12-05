@@ -26,15 +26,16 @@ import './styles.scss';
 const Court = ({ formIsOpen }) => {
   const dispatch = useDispatch();
 
-  // Récupération des joueurs pour générer leur raquette
+  // Retrieval of players to generate their racket
   const players = useSelector((state) => state.game.players);
 
-  // Calcul de la dimension du court en pixel responsive
-  // (si on agrrandi ou réduit la fenêtre) pour le placement de la balle
+  // Calculation of the size of the court in responsive pixels
+  // (if we enlarge or reduce the window) for the ball placement
   const targetRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useLayoutEffect(() => {
+    // Listener for screen resize
     function updateSize() {
       if (targetRef.current) {
         setDimensions({
@@ -50,8 +51,8 @@ const Court = ({ formIsOpen }) => {
 
   // FIXME: ANTI JEU, si un des joueur appuis sur une touche
   // FIXME: ça coupe le mouvement de l’autre joueur …
-  // Mouvement des raquettes des joueurs
-  const handleKeyPress = useCallback((evt) => {
+  // Movement of the player’s rackets
+  const handleKeyDown = useCallback((evt) => {
     const key = evt.keyCode || evt.which;
     const { player1, player2 } = keyCodes;
 
@@ -70,14 +71,15 @@ const Court = ({ formIsOpen }) => {
   });
 
   useEffect(() => {
+    // Listener for keydown
     if (!formIsOpen) {
-      window.addEventListener('keydown', handleKeyPress);
+      window.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyPress]);
+  }, [handleKeyDown]);
 
   return (
     <div className="court" ref={targetRef}>

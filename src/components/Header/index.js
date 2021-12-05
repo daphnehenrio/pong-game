@@ -29,9 +29,10 @@ const Header = () => {
     gameStart,
   } = useSelector((state) => state.game);
 
-  // Vérifier s’il y a des joueurs enregistrer pour aficher nom et score
+  // Check if there are players registered to display name and score
   const existingPlayers = players[0].name && players[1].name;
 
+  // Start game function
   const handleStart = () => {
     dispatch(actionStartGame());
   };
