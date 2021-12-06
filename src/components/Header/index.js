@@ -26,7 +26,7 @@ const Header = () => {
 
   const {
     players,
-    gameStart,
+    gameStarted,
   } = useSelector((state) => state.game);
 
   // Check if there are players registered to display name and score
@@ -44,7 +44,7 @@ const Header = () => {
           <Player key={player.id} player={player} />
         ))}
       </div>
-      {!gameStart && (
+      {!gameStarted && (
         <button
           type="button"
           onClick={handleStart}

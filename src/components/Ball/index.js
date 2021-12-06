@@ -8,6 +8,7 @@ import {
   actionUpdateBallSpead,
   actionUpdateBallPosition,
   actionUpdateScore,
+  actionEndGame,
 } from '../../actions';
 
 // ? Import
@@ -17,8 +18,10 @@ import './styles.scss';
 const Ball = ({ courtDimension }) => {
   const dispatch = useDispatch();
   const {
-    gameStart,
+    gameStarted,
     gamePaused,
+    gameEnded,
+    endScore,
     players,
     racket,
     ball,
@@ -51,7 +54,7 @@ const Ball = ({ courtDimension }) => {
 
   // Movement of the ball
   const handleMovement = () => {
-    if (!gamePaused && gameStart) {
+    if (!gamePaused && !gameEnded && gameStarted) {
       // Define the ball position in the court without overflow
       let xPosition = ballPosition.x + xSpeed;
       let yPosition = ballPosition.y + ySpeed;
@@ -127,7 +130,12 @@ const Ball = ({ courtDimension }) => {
             || ballPosition.y + ySpeed > players[1].racketPosition + racket.height
           )
       ) {
+        // Update score
         dispatch(actionUpdateScore(players[0].id));
+        // If player score >= endScore then end game
+        if ((players[0].score + 1) >= endScore) {
+          dispatch(actionEndGame());
+        }
         // Reset ball speed
         ballSpeedReset();
         // reset ball position
@@ -143,6 +151,13 @@ const Ball = ({ courtDimension }) => {
           )
       ) {
         dispatch(actionUpdateScore(players[1].id));
+        // If player score >= endScore then end game
+        if ((players[1].score + 1) >= endScore) {
+          dispatch(actionEndGame());
+        }
+        // Reset ball speed
+        ballSpeedReset();
+        // reset ball position
         ballReset();
       }
     }
@@ -151,10 +166,10 @@ const Ball = ({ courtDimension }) => {
   useEffect(() => {
     // Recenter the ball if you resize the game window
     // before starting the game
-    if (!gameStart) {
+    if (!gameStarted) {
       ballReset();
     }
-  }, [courtDimension, gameStart]);
+  }, [courtDimension, gameStarted]);
 
   useEffect(
     () => {
@@ -165,7 +180,7 @@ const Ball = ({ courtDimension }) => {
         clearTimeout(loop);
       };
     },
-    [ballPosition, gameStart, gamePaused],
+    [ballPosition, gameStarted, gamePaused],
   );
 
   return (

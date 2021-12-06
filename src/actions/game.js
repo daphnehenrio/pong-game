@@ -2,6 +2,7 @@ export const SET_PLAYERS_NAME = 'action/SET_PLAYERS_NAME';
 export const MOVE_PLAYER_RACKET = 'action/MOVE_PLAYER_RACKET';
 export const START_GAME = 'action/START_GAME';
 export const PAUSE_GAME = 'action/PAUSE_GAME';
+export const END_GAME = 'action/END_GAME';
 export const UPDATE_BALL_SPEAD = 'action/UPDATE_BALL_SPEAD';
 export const UPDATE_BALL_POSITION = 'action/UPDATE_BALL_POSITION';
 export const UPDATE_SCORE = 'action/UPDATE_SCORE';
@@ -43,6 +44,13 @@ export const actionStartGame = () => ({
  */
 export const actionPauseGame = () => ({
   type: PAUSE_GAME,
+});
+
+/**
+ * action ➔ End Game
+ */
+export const actionEndGame = () => ({
+  type: END_GAME,
 });
 
 /**
