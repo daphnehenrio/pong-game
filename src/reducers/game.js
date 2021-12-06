@@ -31,6 +31,7 @@ const initialState = {
     racketMoveDistance: 35,
     height: 50,
   },
+  scores: [],
 };
 
 export default function game(state = initialState, action) {
@@ -124,6 +125,13 @@ export default function game(state = initialState, action) {
             y,
           },
         },
+      };
+    }
+    case GameActions.GET_SCORES: {
+      console.log(action);
+      return {
+        ...state,
+        scores: action.scores,
       };
     }
     case GameActions.UPDATE_SCORE: {

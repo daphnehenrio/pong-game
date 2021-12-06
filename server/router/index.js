@@ -11,9 +11,9 @@ const scoreController = require('../controllers/scoreController');
 const router = express.Router();
 
 // Routes
-router.get('/', capture(scoreController.getScores));
+router.get('/scores', capture(scoreController.getScores));
 // FIXME: post is only for add, check put or patch methode for add or update
-router.post('/', capture(scoreController.updateScore));
+router.post('/scores', capture(scoreController.updateScore));
 
 // 404
 router.use((req, res) => {

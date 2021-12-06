@@ -5,6 +5,7 @@ export const PAUSE_GAME = 'action/PAUSE_GAME';
 export const UPDATE_BALL_SPEAD = 'action/UPDATE_BALL_SPEAD';
 export const UPDATE_BALL_POSITION = 'action/UPDATE_BALL_POSITION';
 export const UPDATE_SCORE = 'action/UPDATE_SCORE';
+export const GET_SCORES = 'action/GET_SCORES';
 
 /**
  * action ➔ Set players name in Store
@@ -73,4 +74,11 @@ export const actionUpdateBallPosition = (x, y) => ({
 export const actionUpdateScore = (playerId) => ({
   type: UPDATE_SCORE,
   playerId,
+});
+
+/**
+ * action ➔ Get all scores
+ */
+export const actionGetScores = () => ({
+  type: GET_SCORES,
 });
