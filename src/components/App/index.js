@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router';
 // ? Import
 import Home from '../Home';
 import Scores from '../Scores';
+import NotFound from '../NotFound';
 
 // ? Import styles
 import './styles.scss';
@@ -15,9 +16,7 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/scores" element={<Scores />} />
-      <Route>
-        404
-      </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </div>
 );
