@@ -1,8 +1,10 @@
 import * as GameActions from '../actions/game';
 
 const initialState = {
-  gameStart: false,
+  gameStarted: false,
   gamePaused: false,
+  gameEnded: false,
+  endScore: 10,
   players: [{
     id: 1,
     name: '',
@@ -88,9 +90,17 @@ export default function game(state = initialState, action) {
     }
     case GameActions.START_GAME: {
       // Start the game
+
+      // Clean scores of players
+      const playersWithScoresCleaned = state.players.map((player) => {
+        player.score = 0;
+        return player;
+      });
       return {
         ...state,
-        gameStart: true,
+        gameStarted: true,
+        gameEnded: false,
+        players: playersWithScoresCleaned,
       };
     }
     case GameActions.PAUSE_GAME: {
@@ -98,6 +108,14 @@ export default function game(state = initialState, action) {
       return {
         ...state,
         gamePaused: !state.gamePaused,
+      };
+    }
+    case GameActions.END_GAME: {
+      // End the game
+      return {
+        ...state,
+        gameStarted: false,
+        gameEnded: true,
       };
     }
     case GameActions.UPDATE_BALL_SPEAD: {
