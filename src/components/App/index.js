@@ -1,50 +1,26 @@
 // ? Import npm
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { Route, Routes } from 'react-router';
 
 // ? Import
-import Header from '../Header';
-import Court from '../Court';
-import Form from '../Form';
-
-// ? Import actions
-import { actionPauseGame } from '../../actions';
+import Home from '../Home';
+import Scores from '../Scores';
 
 // ? Import styles
 import './styles.scss';
 
 // ? Composant
-const App = () => {
-  const dispatch = useDispatch();
-  const {
-    players,
-  } = useSelector((state) => state.game);
-
-  // Vérifier s’il y a des joueurs enregistrer pour aficher formulaire
-  const existingPlayers = !!players[0].name && players[1].name;
-
-  const handleKeyPress = (evt) => {
-    const key = evt.keyCode || evt.which;
-
-    if (key === 32) {
-      dispatch(actionPauseGame());
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('keypress', handleKeyPress);
-
-    return () => window.removeEventListener('keypress', handleKeyPress);
-  }, []);
-
-  return (
-    <div className="app">
-      <Header />
-      <Court formIsOpen={!existingPlayers} />
-      { !existingPlayers && <Form isOpen={!existingPlayers} />}
-    </div>
-  );
-};
+const App = () => (
+  <div className="app">
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/scores" element={<Scores />} />
+      <Route>
+        404
+      </Route>
+    </Routes>
+  </div>
+);
 
 // ? Export
 export default App;
