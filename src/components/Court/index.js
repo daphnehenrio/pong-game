@@ -27,7 +27,7 @@ const Court = ({ formIsOpen }) => {
   const dispatch = useDispatch();
 
   // Retrieval of players to generate their racket
-  const players = useSelector((state) => state.game.players);
+  const { players, gamePaused } = useSelector((state) => state.game);
 
   // Calculation of the size of the court in responsive pixels
   // (if we enlarge or reduce the window) for the ball placement
@@ -96,6 +96,9 @@ const Court = ({ formIsOpen }) => {
         </>
       )}
       <div className="middle" />
+      {gamePaused && (
+        <div className="paused"><span>PAUSE</span></div>
+      )}
     </div>
   );
 };
