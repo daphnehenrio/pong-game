@@ -16,6 +16,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const {
     players,
+    gameStarted,
+    gameEnded,
   } = useSelector((state) => state.game);
 
   // Vérifier s’il y a des joueurs enregistrer pour aficher formulaire
@@ -29,10 +31,12 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    window.addEventListener('keypress', handleKeyPress);
+    if (gameStarted && !gameEnded) {
+      window.addEventListener('keypress', handleKeyPress);
+    }
 
     return () => window.removeEventListener('keypress', handleKeyPress);
-  }, []);
+  }, [gameStarted, gameEnded]);
   return (
     <>
       <Header />
