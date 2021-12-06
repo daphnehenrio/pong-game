@@ -27,7 +27,7 @@ export default (store) => (next) => (action) => {
         });
       break;
     }
-    // ---------------------------- GET SCORES ----------------------------
+    // ---------------------------- UPDATE SCORES ----------------------------
     case UPDATE_SCORE: {
       const { players } = store.getState().game;
       const winnerPlayer = players.find((player) => player.id === action.playerId);
