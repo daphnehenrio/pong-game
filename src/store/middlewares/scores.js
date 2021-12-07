@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { base_url } from 'src/constants/axios';
-import { GET_SCORES, UPDATE_SCORE } from 'src/actions/game';
+import { GET_SCORES, UPDATE_SCORE, CHANGE_PAGE } from 'src/actions/game';
 
 // eslint-disable-next-line no-unused-vars
 export default (store) => (next) => (action) => {
@@ -49,6 +49,10 @@ export default (store) => (next) => (action) => {
           console.error(err);
           next(action);
         });
+      break;
+    }
+    case CHANGE_PAGE: {
+      action.navigate(action.route);
       break;
     }
     // ---------------------------- DEFAULT ----------------------------

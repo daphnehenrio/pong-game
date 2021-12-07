@@ -1,10 +1,11 @@
 // ? Import npm
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import PropTypes from 'prop-types';
 
 // ? Import actions
-import { actionStartGame } from '../../actions';
+import { actionStartGame, actionChangePage } from '../../actions';
 
 // ? Import
 import './styles.scss';
@@ -23,6 +24,7 @@ const Player = ({ player }) => {
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     players,
@@ -36,6 +38,11 @@ const Header = () => {
   const handleStart = () => {
     dispatch(actionStartGame());
   };
+
+  const handleDisplayScores = () => {
+    dispatch(actionChangePage('/scores', navigate));
+  };
+
   return (
     <div className="header">
       <h1>Pong Game</h1>
@@ -44,11 +51,20 @@ const Header = () => {
           <Player key={player.id} player={player} />
         ))}
       </div>
+      {!gameStarted && existingPlayers && (
+      <button
+        className="start"
+        type="button"
+        onClick={handleStart}
+      >Start Game
+      </button>
+      )}
       {!gameStarted && (
         <button
+          className="scores"
           type="button"
-          onClick={handleStart}
-        >Start
+          onClick={handleDisplayScores}
+        >Tous les scores
         </button>
       )}
     </div>
