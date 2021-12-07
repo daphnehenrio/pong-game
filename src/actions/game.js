@@ -1,4 +1,4 @@
-export const SET_PLAYERS_NAME = 'action/SET_PLAYERS_NAME';
+export const SET_PLAYERS_NAME_AND_KEYBOARD = 'action/SET_PLAYERS_NAME_AND_KEYBOARD';
 export const MOVE_PLAYER_RACKET = 'action/MOVE_PLAYER_RACKET';
 export const START_GAME = 'action/START_GAME';
 export const PAUSE_GAME = 'action/PAUSE_GAME';
@@ -13,11 +13,13 @@ export const CHANGE_PAGE = 'action/CHANGE_PAGE';
  * action ➔ Set players name in Store
  * @param {string} player1 - player1's name
  * @param {string} player2 - player2's name
+ * @param {string} keyboard - keyboard layout
  */
-export const actionSetPlayersName = (player1, player2) => ({
-  type: SET_PLAYERS_NAME,
+export const actionSetPlayersName = (player1, player2, keyboard) => ({
+  type: SET_PLAYERS_NAME_AND_KEYBOARD,
   player1,
   player2,
+  keyboard,
 });
 
 /**

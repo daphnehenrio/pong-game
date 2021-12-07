@@ -27,7 +27,11 @@ const Court = ({ formIsOpen }) => {
   const dispatch = useDispatch();
 
   // Retrieval of players to generate their racket
-  const { players, gamePaused } = useSelector((state) => state.game);
+  const {
+    players,
+    gamePaused,
+    keyboardLayout,
+  } = useSelector((state) => state.game);
 
   // Calculation of the size of the court in responsive pixels
   // (if we enlarge or reduce the window) for the ball placement
@@ -56,7 +60,7 @@ const Court = ({ formIsOpen }) => {
   // Movement of the player’s rackets
   const handleKeyDown = useCallback((evt) => {
     const key = evt.keyCode || evt.which;
-    const { player1, player2 } = keyCodes;
+    const { player1, player2 } = keyCodes[keyboardLayout];
 
     if (key === player1.up) {
       dispatch(actionMovePlayerRacket(1, 'up', dimensions.height));

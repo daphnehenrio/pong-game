@@ -5,6 +5,7 @@ const initialState = {
   gamePaused: false,
   gameEnded: false,
   endScore: 10,
+  keyboardLayout: 'azerty',
   players: [{
     id: 1,
     name: '',
@@ -35,7 +36,7 @@ const initialState = {
 
 export default function game(state = initialState, action) {
   switch (action.type) {
-    case GameActions.SET_PLAYERS_NAME: {
+    case GameActions.SET_PLAYERS_NAME_AND_KEYBOARD: {
       // Set players’ name
       const players = state.players.map((player) => {
         player.name = action[`player${player.id}`];
@@ -44,6 +45,7 @@ export default function game(state = initialState, action) {
       return {
         ...state,
         players,
+        keyboardLayout: action.keyboard,
       };
     }
     case GameActions.MOVE_PLAYER_RACKET: {
