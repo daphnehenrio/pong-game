@@ -11,8 +11,11 @@ Parce qu’une vidéo vaut mille mots, tu peux trouver [un exemple de jeu ici](h
 - When game is started press space to toogle paused game
 - Players
   - Player one : play with arrow up and down
-  - Player two : play with a and o (azerty keybord layout)
-  - Go to src/constants/gameKeys.js to change the key codes or enable/display specific keybord disposition (bépoé / qwerty)
+  - Player two : play with
+    - AZERTY : a and o
+    - QWERTY : w and s
+    - BÉPOÈ : é and u
+  - Go to src/constants/gameKeys.js to change the key codes
 
 ### Variables
 
