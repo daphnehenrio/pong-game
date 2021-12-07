@@ -7,6 +7,7 @@ export const UPDATE_BALL_SPEAD = 'action/UPDATE_BALL_SPEAD';
 export const UPDATE_BALL_POSITION = 'action/UPDATE_BALL_POSITION';
 export const UPDATE_SCORE = 'action/UPDATE_SCORE';
 export const GET_SCORES = 'action/GET_SCORES';
+export const CHANGE_PAGE = 'action/CHANGE_PAGE';
 
 /**
  * action ➔ Set players name in Store
@@ -89,4 +90,15 @@ export const actionUpdateScore = (playerId) => ({
  */
 export const actionGetScores = () => ({
   type: GET_SCORES,
+});
+
+/**
+ * action ➔ Switch page / on /scores
+ * @param {string} route - route name
+ * @param {function} navigate - navigate from react-router
+ */
+export const actionChangePage = (route, navigate) => ({
+  type: CHANGE_PAGE,
+  route,
+  navigate,
 });
