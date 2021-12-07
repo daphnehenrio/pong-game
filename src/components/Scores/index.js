@@ -20,8 +20,8 @@ const Scores = () => {
   };
 
   useEffect(() => {
+    // Get all scores since server
     dispatch(actionGetScores());
-    console.log(scores);
   }, []);
 
   return (

@@ -41,8 +41,7 @@ export default (store) => (next) => (action) => {
         .post(
           `${base_url}/scores?name=${data.name}&score=${data.score}`,
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           next(action);
         })
         .catch((err) => {

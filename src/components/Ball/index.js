@@ -11,7 +11,7 @@ import {
   actionEndGame,
 } from '../../actions';
 
-// ? Import
+// ? Import styles
 import './styles.scss';
 
 // ? Composant
@@ -44,6 +44,7 @@ const Ball = ({ courtDimension }) => {
     dispatch(actionUpdateBallPosition(x, y));
   };
 
+  // Reinitialization ball speed
   const ballSpeedReset = () => {
     // If current speed is positive, set negative baseSpeed, else, set positive baseSpeed
     const newXSpeed = xSpeed > 0 ? -baseSpeed.x : baseSpeed.x;

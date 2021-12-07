@@ -40,6 +40,19 @@
 
 .centered {
   text-align: center;
+
+  button {
+    background-color: transparent;
+    border: none;
+    padding:20px;
+    font-size: 30px;
+    font-family: 'more_perfect_dos_vgaregular', 'Courier New', monospace;
+    color: #bbb;
+
+    &:hover {
+      color: #000;
+    }
+  }
 }
 
 .inverted {

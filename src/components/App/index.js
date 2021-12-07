@@ -1,8 +1,9 @@
 // ? Import npm
 import React from 'react';
+// | <Switch> component was replaced by <Routes> in react-router v6
 import { Route, Routes } from 'react-router';
 
-// ? Import
+// ? Import components
 import Home from '../Home';
 import Scores from '../Scores';
 import NotFound from '../NotFound';

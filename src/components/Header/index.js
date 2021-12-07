@@ -7,11 +7,12 @@ import PropTypes from 'prop-types';
 // ? Import actions
 import { actionStartGame, actionChangePage } from '../../actions';
 
-// ? Import
+// ? Import styles
 import './styles.scss';
 
 // ? Composant
 
+// One player component to display Name & score
 const Player = ({ player }) => {
   const { name, score } = player;
   return (
@@ -39,6 +40,7 @@ const Header = () => {
     dispatch(actionStartGame());
   };
 
+  // Go to scores page
   const handleDisplayScores = () => {
     dispatch(actionChangePage('/scores', navigate));
   };

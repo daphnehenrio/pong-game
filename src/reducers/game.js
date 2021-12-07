@@ -24,9 +24,6 @@ const initialState = {
     maxSpeed: { x: 27, y: 24 },
     xSpeed: 17,
     ySpeed: 5,
-    xBounced: false,
-    yBounced: false,
-    stop: false,
     ballPosition: { x: 0, y: 0 },
   },
   racket: {
@@ -146,7 +143,7 @@ export default function game(state = initialState, action) {
       };
     }
     case GameActions.GET_SCORES: {
-      console.log(action);
+      // Set scores from axios in reducer
       return {
         ...state,
         scores: action.scores,

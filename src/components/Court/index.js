@@ -35,7 +35,7 @@ const Court = ({ formIsOpen }) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useLayoutEffect(() => {
-    // Listener for screen resize
+    // Listener for screen resize to get new court dimension
     function updateSize() {
       if (targetRef.current) {
         setDimensions({
@@ -46,6 +46,8 @@ const Court = ({ formIsOpen }) => {
     }
     window.addEventListener('resize', updateSize);
     updateSize();
+
+    // Clean listener
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
@@ -71,11 +73,12 @@ const Court = ({ formIsOpen }) => {
   });
 
   useEffect(() => {
-    // Listener for keydown
+    // Listener for keydown for racket movements
     if (!formIsOpen) {
       window.addEventListener('keydown', handleKeyDown);
     }
 
+    // Clean listener
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };

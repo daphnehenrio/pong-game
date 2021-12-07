@@ -4,6 +4,41 @@ Le jeu est inspiré du tennis de table en vue de dessus, et chaque joueur s'affr
 
 Parce qu’une vidéo vaut mille mots, tu peux trouver [un exemple de jeu ici](https://youtu.be/fiShX2pTz9A).
 
+## Game
+
+### Commands
+
+- When game is started press space to toogle paused game
+- Players
+  - Player one : play with arrow up and down
+  - Player two : play with a and o (azerty keybord layout)
+  - Go to src/constants/gameKeys.js to change the key codes or enable/display specific keybord disposition (bépoé / qwerty)
+
+### Variables
+
+You can change the following variables in src/reducers/game.js to change difficulty by example.
+
+```js
+const initialState = {
+  …
+  endScore: 10, // When a player reaches 10 points the game is over 
+  …
+  ball: {
+    size: 10, // Size of ball in pixel
+    baseSpeed: { x: 17, y: 5 }, // Initial ball speed in pixel
+    maxSpeed: { x: 27, y: 24 }, // Maximum ball speed in pixel
+    xSpeed: 17, // Current ball speed x in pixel
+    ySpeed: 5, // Current ball speed y in pixel
+    …
+  },
+  racket: {
+    racketMoveDistance: 35, // The number of pixels covered by the snowshoes when they are moved
+    height: 50, // Height of rackets in pixel
+  },
+  …
+};
+```
+
 ## Scripts
 
 Lunch yarn to install the dependances.
