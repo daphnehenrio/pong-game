@@ -2,32 +2,44 @@ export default {
   // key codes list
   azerty: {
     player1: {
-      up: 38, // ⬆️
-      down: 40, // ⬇️
+      up: 65,
+      down: 81,
+      upLetter: 'a',
+      downLetter: 'q',
     },
     player2: {
-      up: 65, // a
-      down: 79, // o
+      up: 38,
+      down: 40,
+      upLetter: '⬆️',
+      downLetter: '⬇️',
     },
   },
   qwerty: {
     player1: {
-      up: 38, // ⬆️
-      down: 40, // ⬇️
+      up: 87, // w
+      down: 83,
+      upLetter: 'w',
+      downLetter: 's',
     },
     player2: {
-      up: 87, // w
-      down: 83, // o
+      up: 38,
+      down: 40,
+      upLetter: '⬆️',
+      downLetter: '⬇️',
     },
   },
   bepo: {
     player1: {
-      up: 38, // ⬆️
-      down: 40, // ⬇️
+      up: 87,
+      down: 85,
+      upLetter: 'é',
+      downLetter: 'u',
     },
     player2: {
-      up: 87, // é
-      down: 85, // u
+      up: 38,
+      down: 40,
+      upLetter: '⬆️',
+      downLetter: '⬇️',
     },
   },
 };
