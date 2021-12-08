@@ -10,11 +10,12 @@ Parce qu’une vidéo vaut mille mots, tu peux trouver [un exemple de jeu ici](h
 
 - When game is started press space to toogle paused game
 - Players
-  - Player one : play with arrow up and down
-  - Player two : play with
-    - AZERTY : a and o
+  - Player one : play with
+    - AZERTY : a and q
     - QWERTY : w and s
     - BÉPOÈ : é and u
+  - Player two : play with arrow up and down
+
   - Go to src/constants/gameKeys.js to change the key codes
 
 ### Variables
